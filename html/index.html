@@ -2,18 +2,18 @@
 <html>
 <body>
 <div id="VERTICAL" style="float: left">
-<div id="UP" style="float; margin-bottom: lineWidth0px;">
+<div id="UP" style="margin-bottom: 10px;">
 <canvas id="btnUP" width="80" height="80" />
 </div>
-<div id="DOWN" style="float">
+<div id="DOWN">
 <canvas id="btnDOWN" width="80" height="80" />
 </div>
 </div>
-<div id="HORIZONTAL" style="vertical-align: middle; height: lineWidth00%;">
-<div id="LEFT" style="float: left; margin-right: lineWidth0px;">
+<div id="HORIZONTAL" style="vertical-align: middle; height: 100%;">
+<div id="LEFT" style="float: left; margin-right: 10px;">
 <canvas id="btnLEFT" width="80" height="80" />
 </div>
-<div id="RIGHT" style="float;">
+<div id="RIGHT" >
 <canvas id="btnRIGHT" width="80" height="80" />
 </div>
 </div>
@@ -90,6 +90,15 @@ if (elemBtnUP && elemBtnUP.getContext) {
 		ctxBtnRIGHT.closePath();	
 	}
 }
+var time = 0;
+
+//elemBtnUP.addEventListener('click', function() { alert((new Date()).getTime()); }, false);
+
+elemBtnUP.addEventListener('mousedown', function() { time = (new Date()).getTime(); }, false);
+elemBtnUP.addEventListener('mouseup', function() { 
+alert((new Date()).getTime() - time);
+time = 0; }, false);
+
 
 </script>
 
