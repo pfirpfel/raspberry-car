@@ -2,15 +2,15 @@
 <html>
 <body>
 <div id="VERTICAL" style="float: left">
-<div id="UP" style="float; margin-bottom: 10px;">
+<div id="UP" style="float; margin-bottom: lineWidth0px;">
 <canvas id="btnUP" width="80" height="80" />
 </div>
 <div id="DOWN" style="float">
 <canvas id="btnDOWN" width="80" height="80" />
 </div>
 </div>
-<div id="HORIZONTAL" style="vertical-align: middle; height: 100%;">
-<div id="LEFT" style="float: left; margin-right: 10px;">
+<div id="HORIZONTAL" style="vertical-align: middle; height: lineWidth00%;">
+<div id="LEFT" style="float: left; margin-right: lineWidth0px;">
 <canvas id="btnLEFT" width="80" height="80" />
 </div>
 <div id="RIGHT" style="float;">
@@ -27,7 +27,8 @@ var elemBtnRIGHT = document.getElementById('btnRIGHT');
 
 var fillStyle = '#ddd';
 var strokeStyle = '#000';
-var lineWidth = 2;
+var lineWidth = 4;
+var x = elemBtnUP.width = elemBtnDOWN.width = elemBtnLEFT.width = elemBtnRIGHT.width = elemBtnUP.height = elemBtnDOWN.height = elemBtnLEFT.height = elemBtnRIGHT.height = window.innerHeight/2.25;
 
 if (elemBtnUP && elemBtnUP.getContext) {
 	var ctxBtnUP = elemBtnUP.getContext('2d');
@@ -40,10 +41,10 @@ if (elemBtnUP && elemBtnUP.getContext) {
 		ctxBtnUP.strokeStyle = strokeStyle;
 		ctxBtnUP.lineWidth   = lineWidth;
 		
-		ctxBtnUP.moveTo(1, 79);
-		ctxBtnUP.lineTo(40, 1);
-		ctxBtnUP.lineTo(79, 79);
-		ctxBtnUP.lineTo(1, 79);
+		ctxBtnUP.moveTo(lineWidth, x-lineWidth);
+		ctxBtnUP.lineTo(x/2, lineWidth);
+		ctxBtnUP.lineTo(x-lineWidth, x-lineWidth);
+		ctxBtnUP.lineTo(lineWidth, x-lineWidth);
 		
 		ctxBtnUP.fill();
 		ctxBtnUP.stroke();
@@ -53,10 +54,10 @@ if (elemBtnUP && elemBtnUP.getContext) {
 		ctxBtnDOWN.strokeStyle = strokeStyle;
 		ctxBtnDOWN.lineWidth   = lineWidth;
 		
-		ctxBtnDOWN.moveTo(1, 1);
-		ctxBtnDOWN.lineTo(40, 79);
-		ctxBtnDOWN.lineTo(79, 1);
-		ctxBtnDOWN.lineTo(1, 1);
+		ctxBtnDOWN.moveTo(lineWidth, lineWidth);
+		ctxBtnDOWN.lineTo(x/2, x-lineWidth);
+		ctxBtnDOWN.lineTo(x-lineWidth, lineWidth);
+		ctxBtnDOWN.lineTo(lineWidth, lineWidth);
 		
 		ctxBtnDOWN.fill();
 		ctxBtnDOWN.stroke();
@@ -66,10 +67,10 @@ if (elemBtnUP && elemBtnUP.getContext) {
 		ctxBtnLEFT.strokeStyle = strokeStyle;
 		ctxBtnLEFT.lineWidth   = lineWidth;
 		
-		ctxBtnLEFT.moveTo(79, 1);
-		ctxBtnLEFT.lineTo(79, 79);
-		ctxBtnLEFT.lineTo(1, 40);
-		ctxBtnLEFT.lineTo(79, 1);
+		ctxBtnLEFT.moveTo(x-lineWidth, lineWidth);
+		ctxBtnLEFT.lineTo(x-lineWidth, x-lineWidth);
+		ctxBtnLEFT.lineTo(lineWidth, x/2);
+		ctxBtnLEFT.lineTo(x-lineWidth, lineWidth);
 		
 		ctxBtnLEFT.fill();
 		ctxBtnLEFT.stroke();
@@ -79,10 +80,10 @@ if (elemBtnUP && elemBtnUP.getContext) {
 		ctxBtnRIGHT.strokeStyle = strokeStyle;
 		ctxBtnRIGHT.lineWidth   = lineWidth;
 		
-		ctxBtnRIGHT.moveTo(1, 1);
-		ctxBtnRIGHT.lineTo(79, 40);
-		ctxBtnRIGHT.lineTo(1, 79);
-		ctxBtnRIGHT.lineTo(1, 1);
+		ctxBtnRIGHT.moveTo(lineWidth, lineWidth);
+		ctxBtnRIGHT.lineTo(x-lineWidth, x/2);
+		ctxBtnRIGHT.lineTo(lineWidth, x-lineWidth);
+		ctxBtnRIGHT.lineTo(lineWidth, lineWidth);
 		
 		ctxBtnRIGHT.fill();
 		ctxBtnRIGHT.stroke();
