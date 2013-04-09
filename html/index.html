@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="VERTICAL" style="float: left">
+<div id="UP" style="float; margin-bottom: 10px;">
+<canvas id="btnUP" width="80" height="80" />
+</div>
+<div id="DOWN" style="float">
+<canvas id="btnDOWN" width="80" height="80" />
+</div>
+</div>
+<div id="HORIZONTAL" style="vertical-align: middle; height: 100%;">
+<div id="LEFT" style="float: left; margin-right: 10px;">
+<canvas id="btnLEFT" width="80" height="80" />
+</div>
+<div id="RIGHT" style="float;">
+<canvas id="btnRIGHT" width="80" height="80" />
+</div>
+</div>
+
+
+<script>
+var elemBtnUP = document.getElementById('btnUP');
+var elemBtnDOWN = document.getElementById('btnDOWN');
+var elemBtnLEFT = document.getElementById('btnLEFT');
+var elemBtnRIGHT = document.getElementById('btnRIGHT');
+
+var fillStyle = '#ddd';
+var strokeStyle = '#000';
+var lineWidth = 2;
+
+if (elemBtnUP && elemBtnUP.getContext) {
+	var ctxBtnUP = elemBtnUP.getContext('2d');
+	var ctxBtnDOWN = elemBtnDOWN.getContext('2d');
+	var ctxBtnLEFT = elemBtnLEFT.getContext('2d');
+	var ctxBtnRIGHT = elemBtnRIGHT.getContext('2d');
+	
+	if(ctxBtnUP){
+		ctxBtnUP.fillStyle   = fillStyle;
+		ctxBtnUP.strokeStyle = strokeStyle;
+		ctxBtnUP.lineWidth   = lineWidth;
+		
+		ctxBtnUP.moveTo(1, 79);
+		ctxBtnUP.lineTo(40, 1);
+		ctxBtnUP.lineTo(79, 79);
+		ctxBtnUP.lineTo(1, 79);
+		
+		ctxBtnUP.fill();
+		ctxBtnUP.stroke();
+		ctxBtnUP.closePath();
+		
+		ctxBtnDOWN.fillStyle   = fillStyle;
+		ctxBtnDOWN.strokeStyle = strokeStyle;
+		ctxBtnDOWN.lineWidth   = lineWidth;
+		
+		ctxBtnDOWN.moveTo(1, 1);
+		ctxBtnDOWN.lineTo(40, 79);
+		ctxBtnDOWN.lineTo(79, 1);
+		ctxBtnDOWN.lineTo(1, 1);
+		
+		ctxBtnDOWN.fill();
+		ctxBtnDOWN.stroke();
+		ctxBtnDOWN.closePath();		
+		
+		ctxBtnLEFT.fillStyle   = fillStyle;
+		ctxBtnLEFT.strokeStyle = strokeStyle;
+		ctxBtnLEFT.lineWidth   = lineWidth;
+		
+		ctxBtnLEFT.moveTo(79, 1);
+		ctxBtnLEFT.lineTo(79, 79);
+		ctxBtnLEFT.lineTo(1, 40);
+		ctxBtnLEFT.lineTo(79, 1);
+		
+		ctxBtnLEFT.fill();
+		ctxBtnLEFT.stroke();
+		ctxBtnLEFT.closePath();	
+		
+		ctxBtnRIGHT.fillStyle   = fillStyle;
+		ctxBtnRIGHT.strokeStyle = strokeStyle;
+		ctxBtnRIGHT.lineWidth   = lineWidth;
+		
+		ctxBtnRIGHT.moveTo(1, 1);
+		ctxBtnRIGHT.lineTo(79, 40);
+		ctxBtnRIGHT.lineTo(1, 79);
+		ctxBtnRIGHT.lineTo(1, 1);
+		
+		ctxBtnRIGHT.fill();
+		ctxBtnRIGHT.stroke();
+		ctxBtnRIGHT.closePath();	
+	}
+}
+
+</script>
+
+</body>
+</html>
