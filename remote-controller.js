@@ -1,6 +1,17 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(80);
-console.log('Server running');
+var express = require('express')
+  , app = module.exports = express()
+  , fs = require('fs')
+  , sys = require('sys')
+  , io = require('socket.io').listen(express)
+  ;
+
+app.get('/', function(req, res){
+	res.sendfile('html/index.html');
+});
+
+app.get(':file(*)',function(req, res, next){
+	res.sendfile('html/' + req.params.file);
+});
+
+app.listen(80);
+
