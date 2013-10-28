@@ -1,0 +1,12 @@
+{
+	"name": "raspberry-remote-control",
+	"description": "rc-car remote controller using node.js and a rapsberry pi",
+	"homepage": "https://github.com/pfirpfel/raspberry-car",
+	"repository":
+	  { "type": "git"
+	  , "url": "git://github.com/pfirpfel/raspberry-car"
+	  },
+	"dependencies": {
+	  "socket.io": ">=0.9"
+	}
+}
