@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<title>control demo</title>
+</head>
 <body>
 <div id="VERTICAL" style="float: left">
-<div id="UP" style="margin-bottom: 10px;">
-<canvas id="btnUP" width="80" height="80" />
+<div style="margin-bottom: 10px;">
+<canvas class="control" id="up" width="80" height="80" />
 </div>
-<div id="DOWN">
-<canvas id="btnDOWN" width="80" height="80" />
+<div>
+<canvas class="control" id="down" width="80" height="80" />
 </div>
 </div>
 <div id="HORIZONTAL">
-<div id="RIGHT" style="float: right">
-<canvas id="btnRIGHT" width="80" height="80" />
+<div style="float: right">
+<canvas class="control" id="right" width="80" height="80" />
 </div>
-<div id="LEFT" style="float: right; margin-right: 10px;">
-<canvas id="btnLEFT" width="80" height="80" />
+<div style="float: right; margin-right: 10px;">
+<canvas class="control" id="left" width="80" height="80" />
 </div>
 <div style="clear: right" />
 <div style="float: left; margin-left: 10%;">
@@ -22,15 +27,13 @@
 <p>(c) by pfirpfel</p>
 </div>
 </div>
-
-
 <script>
-var elemBtnUP = document.getElementById('btnUP');
-var elemBtnDOWN = document.getElementById('btnDOWN');
-var elemBtnLEFT = document.getElementById('btnLEFT');
-var elemBtnRIGHT = document.getElementById('btnRIGHT');
+var elemBtnUP = document.getElementById('up');
+var elemBtnDOWN = document.getElementById('down');
+var elemBtnLEFT = document.getElementById('left');
+var elemBtnRIGHT = document.getElementById('right');
 
-var fillStyle = '#ddd';
+var fillStyle = '#ccc';
 var strokeStyle = '#000';
 var lineWidth = 4;
 var x = elemBtnUP.width = elemBtnDOWN.width = elemBtnLEFT.width = elemBtnRIGHT.width = elemBtnUP.height = elemBtnDOWN.height = elemBtnLEFT.height = elemBtnRIGHT.height = window.innerHeight/2.25;
@@ -95,17 +98,14 @@ if (elemBtnUP && elemBtnUP.getContext) {
 		ctxBtnRIGHT.closePath();	
 	}
 }
-var time = 0;
 
-//elemBtnUP.addEventListener('click', function() { alert((new Date()).getTime()); }, false);
-
-elemBtnUP.addEventListener('mousedown', function() { time = (new Date()).getTime(); }, false);
-elemBtnUP.addEventListener('mouseup', function() { 
-alert((new Date()).getTime() - time);
-time = 0; }, false);
-
-
+var socket = io.connect('http://localhost:5000');
+$(".control").mousedown(function(){
+	socket.emit('control_pressed', { command: this.id, enable: true });
+});
+$(".control").mouseup(function(){
+	socket.emit('control_pressed', { command: this.id, enable: false});
+});
 </script>
-
 </body>
 </html>
