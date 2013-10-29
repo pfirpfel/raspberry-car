@@ -1,0 +1,22 @@
+{
+  "name": "raspberry-car",
+  "version": "0.0.1",
+  "homepage": "https://github.com/pfirpfel/raspberry-car",
+  "authors": [
+    "Michael Kuenzli <michaelkuenzli@gmail.com>"
+  ],
+  "description": "remote control",
+  "main": "remote-controller.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.9.1"
+  }
+}

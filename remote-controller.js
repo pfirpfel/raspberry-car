@@ -8,7 +8,7 @@ server.listen(5000);
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/static/index.html');
 });
-app.use('/static', express.static('static'));
+app.use('/include', express.static('bower_components'));
 
 var client_lock = null;
 
