@@ -6,9 +6,9 @@ var express = require('express')
 server.listen(5000);
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/html/index.html');
+  res.sendfile(__dirname + '/static/index.html');
 });
-app.use('/static', express.static('html'));
+app.use('/static', express.static('static'));
 
 var client_lock = null;
 
