@@ -7,6 +7,7 @@
 	  , "url": "git://github.com/pfirpfel/raspberry-car"
 	  },
 	"dependencies": {
-	  "socket.io": ">=0.9"
+	  "socket.io": ">=0.9",
+	  "express": ">=3.0"
 	}
 }

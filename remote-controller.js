@@ -1,24 +1,14 @@
-var app = require('http').createServer(handler)
-  , io = require('socket.io').listen(app)
-  , fs = require('fs')
+var express = require('express')
+  , app = express()
+  , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server);
 
-app.listen(5000);
+server.listen(5000);
 
-/*
-TODO: serve all files (express?)
-*/
-
-function handler (req, res) {
-  fs.readFile(__dirname + '/html/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/html/index.html');
+});
+app.use('/static', express.static('html'));
 
 var client_lock = null;
 
@@ -31,9 +21,11 @@ io.sockets.on('connection', function (socket) {
   }
   socket.on('control_pressed', function(data){
 	if(client_lock === socket.id){
-		console.log('client: ' + socket.id + ' : ' +data);
+		console.log('client: '
+			+ socket.id + ' : '
+			+ data['command'] + ':' + data['enable']);
 	} else {
-		console.log('command ignored from: ' + socket.id);
+		console.log('command ignored from: ' + socket.command);
 	}
   });
   socket.on('disconnect', function(data){
